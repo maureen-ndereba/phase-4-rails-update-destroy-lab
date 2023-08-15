@@ -15,6 +15,8 @@ function PlantPage() {
       });
   }, []);
 
+  console.log(plants);
+
   function handleAddPlant(newPlant) {
     const updatedPlantsArray = [...plants, newPlant];
     setPlants(updatedPlantsArray);
@@ -33,7 +35,10 @@ function PlantPage() {
   }
 
   const displayedPlants = plants.filter((plant) => {
-    return plant.name.toLowerCase().includes(searchTerm.toLowerCase());
+    if(searchTerm !== ""){
+      return plant.name.toLowerCase().includes(searchTerm.toLowerCase());
+    }
+    return plants;
   });
 
   return (
